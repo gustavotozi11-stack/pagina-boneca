@@ -79,53 +79,89 @@
 </script>
 
 <!-- Popup Upgrade Plano Premium -->
-<div id="modal-upgrade" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.55); align-items:center; justify-content:center; padding:1rem;">
-  <div style="background:#fff; border-radius:1.5rem; max-width:420px; width:100%; padding:2rem 1.5rem 1.5rem; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.25); max-height:90vh; overflow-y:auto;">
+<style>
+#modal-upgrade-inner {
+  background:#fff;
+  border-radius:1.5rem;
+  max-width:420px;
+  width:100%;
+  padding:1.75rem 1.5rem 1.25rem;
+  position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  max-height:92vh;
+  overflow-y:auto;
+}
+@media (max-height: 700px), (max-width: 430px) {
+  #modal-upgrade-inner {
+    padding:1rem 1rem 0.9rem;
+    border-radius:1rem;
+    max-height:96vh;
+  }
+  #modal-upgrade-inner .mu-badge { margin-bottom:0.5rem; }
+  #modal-upgrade-inner .mu-badge span { font-size:0.65rem; padding:0.2rem 0.7rem; }
+  #modal-upgrade-inner .mu-title { font-size:1.1rem !important; margin-bottom:0.35rem !important; }
+  #modal-upgrade-inner .mu-subtitle { font-size:0.78rem !important; margin-bottom:0.75rem !important; }
+  #modal-upgrade-inner .mu-cards { gap:0.5rem !important; margin-bottom:0.75rem !important; }
+  #modal-upgrade-inner .mu-card { padding:0.6rem !important; border-radius:0.75rem !important; }
+  #modal-upgrade-inner .mu-card p { font-size:0.72rem !important; margin-bottom:0.2rem !important; }
+  #modal-upgrade-inner .mu-card .mu-card-title { font-size:0.8rem !important; margin-bottom:0.1rem !important; }
+  #modal-upgrade-inner .mu-card .mu-card-sub { margin-bottom:0.4rem !important; }
+  #modal-upgrade-inner .mu-price-box { padding:0.65rem !important; margin-bottom:0.75rem !important; }
+  #modal-upgrade-inner .mu-price { font-size:2rem !important; }
+  #modal-upgrade-inner .mu-price-label { font-size:0.58rem !important; margin:0.2rem 0 0.3rem !important; }
+  #modal-upgrade-inner .mu-price-social { font-size:0.7rem !important; }
+  #modal-upgrade-inner .mu-cta { padding:0.7rem !important; font-size:0.82rem !important; margin-bottom:0.6rem !important; }
+  #modal-upgrade-inner .mu-skip { font-size:0.75rem !important; }
+}
+</style>
+
+<div id="modal-upgrade" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.55); align-items:center; justify-content:center; padding:0.75rem;">
+  <div id="modal-upgrade-inner">
     <!-- Close -->
-    <button onclick="fecharModalUpgrade()" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.25rem; cursor:pointer; color:#888; line-height:1;">✕</button>
+    <button onclick="fecharModalUpgrade()" style="position:absolute; top:0.75rem; right:0.85rem; background:none; border:none; font-size:1.15rem; cursor:pointer; color:#888; line-height:1;">✕</button>
 
     <!-- Badge -->
-    <div style="text-align:center; margin-bottom:1.25rem;">
+    <div class="mu-badge" style="text-align:center; margin-bottom:1rem;">
       <span style="display:inline-block; background:#e84d4d; color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.08em; padding:0.3rem 0.9rem; border-radius:999px;">🔥 MAIS ESCOLHIDO</span>
     </div>
 
     <!-- Title -->
-    <h2 style="font-family:'Fraunces',serif; font-size:1.5rem; font-weight:700; text-align:center; color:#1a1a1a; margin:0 0 0.75rem; line-height:1.3;">⚡ Espere! Faça um upgrade com desconto exclusivo</h2>
-    <p style="text-align:center; color:#6b7280; font-size:0.875rem; margin:0 0 1.5rem; line-height:1.5;">Leve o Plano Premium com MUITO mais vantagens por um preço especial.</p>
+    <h2 class="mu-title" style="font-family:'Fraunces',serif; font-size:1.4rem; font-weight:700; text-align:center; color:#1a1a1a; margin:0 0 0.6rem; line-height:1.25;">⚡ Espere! Faça um upgrade com desconto exclusivo</h2>
+    <p class="mu-subtitle" style="text-align:center; color:#6b7280; font-size:0.85rem; margin:0 0 1.1rem; line-height:1.4;">Leve o Plano Premium com MUITO mais vantagens por um preço especial.</p>
 
     <!-- Plan cards -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:1.25rem;">
+    <div class="mu-cards" style="display:grid; grid-template-columns:1fr 1fr; gap:0.65rem; margin-bottom:1rem;">
       <!-- Básico -->
-      <div style="border:1.5px solid #e5e7eb; border-radius:1rem; padding:1rem;">
-        <p style="font-weight:700; font-size:0.9rem; color:#1a1a1a; margin:0 0 0.15rem;">Plano Básico</p>
-        <p style="font-size:0.75rem; color:#9ca3af; margin:0 0 0.75rem;">Acesso limitado</p>
-        <p style="font-size:0.8rem; color:#6b7280; margin:0 0 0.3rem;">✕ &nbsp;Sem bônus</p>
-        <p style="font-size:0.8rem; color:#6b7280; margin:0;">✕ &nbsp;Sem atualizações</p>
+      <div class="mu-card" style="border:1.5px solid #e5e7eb; border-radius:1rem; padding:0.85rem;">
+        <p class="mu-card-title" style="font-weight:700; font-size:0.85rem; color:#1a1a1a; margin:0 0 0.1rem;">Plano Básico</p>
+        <p class="mu-card-sub" style="font-size:0.72rem; color:#9ca3af; margin:0 0 0.6rem;">Acesso limitado</p>
+        <p style="font-size:0.78rem; color:#6b7280; margin:0 0 0.25rem;">✕ &nbsp;Sem bônus</p>
+        <p style="font-size:0.78rem; color:#6b7280; margin:0;">✕ &nbsp;Sem atualizações</p>
       </div>
       <!-- Premium -->
-      <div style="border:2px solid #e84d4d; border-radius:1rem; padding:1rem; background:#fff5f5;">
-        <p style="font-weight:700; font-size:0.9rem; color:#e84d4d; margin:0 0 0.15rem;">Plano Premium</p>
-        <p style="font-size:0.75rem; color:#9ca3af; margin:0 0 0.75rem;">Acesso completo</p>
-        <p style="font-size:0.8rem; color:#374151; margin:0 0 0.3rem;">✓ &nbsp;Todos os bônus</p>
-        <p style="font-size:0.8rem; color:#374151; margin:0 0 0.3rem;">✓ &nbsp;4 bonecas + acessórios</p>
-        <p style="font-size:0.8rem; color:#374151; margin:0;">✓ &nbsp;Atualizações vitalícias</p>
+      <div class="mu-card" style="border:2px solid #e84d4d; border-radius:1rem; padding:0.85rem; background:#fff5f5;">
+        <p class="mu-card-title" style="font-weight:700; font-size:0.85rem; color:#e84d4d; margin:0 0 0.1rem;">Plano Premium</p>
+        <p class="mu-card-sub" style="font-size:0.72rem; color:#9ca3af; margin:0 0 0.6rem;">Acesso completo</p>
+        <p style="font-size:0.78rem; color:#374151; margin:0 0 0.25rem;">✓ &nbsp;Todos os bônus</p>
+        <p style="font-size:0.78rem; color:#374151; margin:0 0 0.25rem;">✓ &nbsp;4 bonecas + acessórios</p>
+        <p style="font-size:0.78rem; color:#374151; margin:0;">✓ &nbsp;Atualizações vitalícias</p>
       </div>
     </div>
 
     <!-- Price box -->
-    <div style="background:#fff0f0; border-radius:1rem; padding:1.1rem; text-align:center; margin-bottom:1.25rem;">
-      <p style="font-size:0.8rem; color:#9ca3af; text-decoration:line-through; margin:0 0 0.1rem;">De R$29,90</p>
-      <p style="font-family:'Fraunces',serif; font-size:2.8rem; font-weight:800; color:#e84d4d; margin:0; line-height:1;">R$19,90</p>
-      <p style="font-size:0.65rem; font-weight:800; color:#e84d4d; letter-spacing:0.08em; margin:0.3rem 0 0.5rem;">OFERTA ÚNICA DISPONÍVEL AGORA</p>
-      <p style="font-size:0.75rem; color:#6b7280; margin:0;">Mais de 3.000 mães escolheram o Premium 🔥</p>
+    <div class="mu-price-box" style="background:#fff0f0; border-radius:1rem; padding:0.9rem; text-align:center; margin-bottom:1rem;">
+      <p style="font-size:0.78rem; color:#9ca3af; text-decoration:line-through; margin:0 0 0.05rem;">De R$29,90</p>
+      <p class="mu-price" style="font-family:'Fraunces',serif; font-size:2.6rem; font-weight:800; color:#e84d4d; margin:0; line-height:1.05;">R$19,90</p>
+      <p class="mu-price-label" style="font-size:0.62rem; font-weight:800; color:#e84d4d; letter-spacing:0.08em; margin:0.25rem 0 0.4rem;">OFERTA ÚNICA DISPONÍVEL AGORA</p>
+      <p class="mu-price-social" style="font-size:0.73rem; color:#6b7280; margin:0;">Mais de 3.000 mães escolheram o Premium 🔥</p>
     </div>
 
     <!-- CTA -->
-    <a href="#" onclick="fecharModalUpgrade()" style="display:block; background:#22c55e; color:#fff; font-weight:800; font-size:0.95rem; text-align:center; padding:1rem; border-radius:999px; text-decoration:none; letter-spacing:0.02em; margin-bottom:0.9rem;">🔥 SIM! QUERO O PREMIUM POR R$19,90</a>
+    <a href="#" onclick="fecharModalUpgrade()" class="mu-cta" style="display:block; background:#22c55e; color:#fff; font-weight:800; font-size:0.9rem; text-align:center; padding:0.85rem; border-radius:999px; text-decoration:none; letter-spacing:0.02em; margin-bottom:0.75rem;">🔥 SIM! QUERO O PREMIUM POR R$19,90</a>
 
     <!-- Skip -->
     <p style="text-align:center; margin:0;">
-      <a href="#" onclick="fecharModalUpgrade()" style="font-size:0.8rem; color:#9ca3af; text-decoration:underline;">Continuar com o plano básico</a>
+      <a href="#" onclick="fecharModalUpgrade()" class="mu-skip" style="font-size:0.78rem; color:#9ca3af; text-decoration:underline;">Continuar com o plano básico</a>
     </p>
   </div>
 </div>
