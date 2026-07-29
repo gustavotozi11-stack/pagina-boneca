@@ -1,39 +1,30 @@
-# Kit Casinhas de Boneca — Sales Page
+# Kit Casinhas de Boneca em Papel
 
-A pre-built static sales page (Portuguese) for a printable paper dollhouse kit ("Kit Casinhas de Boneca Realistas em Papel"). Originally built with Lovable/Vite and exported as a static bundle.
-
-## Stack
-
-- Pure static HTML/CSS/JS — no build step required
-- Served via Python's built-in HTTP server
+A static product sales page ("Kit Casinhas de Boneca em Papel — Imprima e Monte") built with plain HTML, CSS, and JavaScript.
 
 ## How to run
 
-The workflow **Start application** serves the site on port 5000:
+The workflow **Start application** serves the site:
 
 ```
 python3 -m http.server 5000
 ```
 
-## File structure
+The page is then available at the Replit preview URL (port 5000).
 
-```
-index.html          — Main sales page (single-file, fully inlined)
-css/
-  styles-BAsjNBlu.css   — Compiled Tailwind/app styles
-images/
-  hero-kit.jpg          — Hero product image (placeholder — replace with real image)
-  bonus-*.webp          — Bonus product images
-  review-*.webp         — Customer review photos
-js/
-  E-v1.js               — Wistia video player
-  latest.js             — UTMify tracking
-  lbzxg14f3c.jsonp      — Wistia embed config
-  pixel.js              — UTMify pixel
-```
+## Stack
+
+- `index.html` — single-page sales site
+- `css/styles-BAsjNBlu.css` — compiled stylesheet
+- `images/` — product images (WebP/JPEG/PNG)
+- `js/` — bundled JS assets
+- `attached_assets/` — original source assets from import
 
 ## Notes
 
-- `images/hero-kit.jpg` is a placeholder (79-byte text file). Replace it with the real hero product image to fix the broken image in the hero section.
-- Two JS bundle files (`assets/index-CC1XeYrQ.js`, `assets/index-B8QECkvs.js`) referenced as `<link rel="modulepreload">` are missing from the export but are not critical — the page renders fully without them.
-- Tracking/pixel scripts (UTMify, Wistia) may show console errors in the Replit preview due to network restrictions; they work normally on a public deployment.
+- Third-party tracking scripts (Meta Pixel, UTMify) will log 404 / connection errors in dev — this is expected; they require live domain access.
+- No build step needed; all assets are pre-built.
+
+## User preferences
+
+<!-- Add preferences here as needed -->
